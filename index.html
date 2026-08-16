@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="胡嘉旺，大模型算法工程师。聚焦 GUI Agent 后训练、Agent 长期记忆、自进化评测与强化学习。">
+  <meta name="theme-color" content="#123f33">
+  <meta property="og:title" content="胡嘉旺｜大模型算法工程师">
+  <meta property="og:description" content="GUI Agent 后训练 · Agent 长期记忆 · 自进化评测 · 强化学习">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://madaramehu.github.io/">
+  <title>胡嘉旺｜大模型算法工程师</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --paper: #f4f0e7;
+      --paper-deep: #e8e1d2;
+      --card: #fffdf8;
+      --ink: #17211d;
+      --muted: #657069;
+      --pine: #123f33;
+      --pine-soft: #dce8e1;
+      --signal: #c95e2c;
+      --signal-soft: #f4ded2;
+      --line: #d9d2c4;
+      --shadow: 0 20px 60px rgba(34, 45, 39, 0.1);
+      --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(18, 63, 51, 0.035) 1px, transparent 1px),
+        linear-gradient(rgba(18, 63, 51, 0.035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      font-family: var(--sans);
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 20;
+      padding: 8px 12px;
+      color: white;
+      background: var(--pine);
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus {
+      transform: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      border-bottom: 1px solid rgba(18, 63, 51, 0.18);
+    }
+
+    .brand {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--signal);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 72px;
+      align-items: end;
+      padding: 86px 0 72px;
+    }
+
+    .hero > * {
+      min-width: 0;
+    }
+
+    .eyebrow,
+    .section-kicker,
+    .rail-label {
+      margin: 0 0 14px;
+      color: var(--signal);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      overflow-wrap: anywhere;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.8rem, 9vw, 7.8rem);
+      font-weight: 800;
+      letter-spacing: -0.08em;
+      line-height: 0.92;
+    }
+
+    .hero-role {
+      max-width: 760px;
+      margin: 30px 0 0;
+      color: var(--pine);
+      font-size: clamp(1.25rem, 2.3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .hero-focus {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--pine);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 160ms ease;
+    }
+
+    .button.primary {
+      color: white;
+      background: var(--pine);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      color: white;
+      background: var(--signal);
+      border-color: var(--signal);
+      transform: translateY(-2px);
+    }
+
+    .contact-card {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      color: white;
+      background: var(--pine);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card::after {
+      content: "AI";
+      position: absolute;
+      right: -8px;
+      bottom: -40px;
+      color: rgba(255, 255, 255, 0.06);
+      font-family: var(--mono);
+      font-size: 9rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .contact-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-card .rail-label {
+      color: #f2a781;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 18px;
+      margin: 0;
+    }
+
+    .contact-list div {
+      display: grid;
+      gap: 2px;
+    }
+
+    .contact-list dt {
+      color: rgba(255, 255, 255, 0.58);
+      font-family: var(--mono);
+      font-size: 0.67rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .contact-list dd {
+      margin: 0;
+      font-size: 0.92rem;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-list a {
+      text-decoration-color: rgba(255, 255, 255, 0.35);
+      text-underline-offset: 4px;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 72px;
+      align-items: start;
+      padding-bottom: 90px;
+    }
+
+    .rail {
+      position: sticky;
+      top: 28px;
+      padding-top: 12px;
+    }
+
+    .rail-block + .rail-block {
+      margin-top: 38px;
+    }
+
+    .rail-nav,
+    .tag-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .rail-nav a {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-decoration: none;
+    }
+
+    .rail-nav span {
+      color: var(--signal);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag-list li {
+      padding: 5px 9px;
+      color: var(--pine);
+      background: var(--pine-soft);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+    }
+
+    .content {
+      min-width: 0;
+    }
+
+    .resume-section {
+      scroll-margin-top: 28px;
+      padding: 58px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--pine);
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .section-index {
+      color: var(--paper-deep);
+      font-family: var(--mono);
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 0.8;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .experience {
+      padding: 32px;
+      background: rgba(255, 253, 248, 0.76);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(34, 45, 39, 0.045);
+    }
+
+    .experience.current {
+      border-top: 5px solid var(--signal);
+    }
+
+    .experience-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 26px;
+    }
+
+    .company {
+      margin: 0;
+      font-size: clamp(1.3rem, 2.7vw, 1.8rem);
+      line-height: 1.3;
+    }
+
+    .role {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .date {
+      padding: 5px 9px;
+      color: var(--pine);
+      background: var(--pine-soft);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .project {
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project + .project {
+      margin-top: 24px;
+    }
+
+    .project-title {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 0 0 12px;
+      font-size: 1.08rem;
+      line-height: 1.45;
+    }
+
+    .project-mark {
+      width: 9px;
+      height: 9px;
+      background: var(--signal);
+      transform: rotate(45deg);
+      flex: 0 0 auto;
+    }
+
+    .project-note {
+      padding: 2px 7px;
+      color: var(--signal);
+      background: var(--signal-soft);
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      font-weight: 700;
+    }
+
+    .points {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .points li {
+      position: relative;
+      padding-left: 20px;
+      color: #3c4741;
+      font-size: 0.95rem;
+    }
+
+    .points li::before {
+      content: "";
+      position: absolute;
+      top: 0.73em;
+      left: 1px;
+      width: 6px;
+      height: 2px;
+      background: var(--signal);
+    }
+
+    strong {
+      color: var(--pine);
+      font-weight: 750;
+    }
+
+    .source-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 0 0 22px;
+    }
+
+    .source-links a {
+      padding: 5px 10px;
+      color: var(--pine);
+      background: var(--pine-soft);
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .source-links a:hover,
+    .source-links a:focus-visible {
+      color: white;
+      background: var(--signal);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .info-card {
+      min-height: 190px;
+      padding: 28px;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+
+    .info-card h3 {
+      margin: 0 0 6px;
+      color: var(--pine);
+      font-size: 1.14rem;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .info-card .period {
+      display: block;
+      margin-top: 22px;
+      color: var(--signal);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .research-card {
+      padding: 34px;
+      color: white;
+      background: var(--pine);
+    }
+
+    .research-card h3 {
+      margin: 0 0 16px;
+      color: #f2a781;
+      font-family: var(--mono);
+      font-size: 0.84rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .research-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 1rem;
+    }
+
+    .research-card strong {
+      color: white;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 26px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 42px;
+        padding-top: 64px;
+      }
+
+      .contact-card {
+        max-width: 520px;
+      }
+
+      .page-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .rail {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        padding: 34px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .rail-block + .rail-block {
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .site-nav {
+        min-height: 62px;
+      }
+
+      .nav-links a:not(:last-child) {
+        display: none;
+      }
+
+      .hero {
+        padding: 52px 0 48px;
+      }
+
+      .eyebrow-tail {
+        display: block;
+        margin-top: 2px;
+      }
+
+      .hero-focus {
+        word-break: break-all;
+      }
+
+      h1 {
+        font-size: clamp(3.5rem, 23vw, 5rem);
+      }
+
+      .hero-role {
+        margin-top: 24px;
+      }
+
+      .contact-card,
+      .experience,
+      .info-card,
+      .research-card {
+        padding: 22px;
+      }
+
+      .rail {
+        grid-template-columns: 1fr;
+      }
+
+      .resume-section {
+        padding: 44px 0;
+      }
+
+      .section-index {
+        font-size: 2.8rem;
+      }
+
+      .experience-header {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .date {
+        justify-self: start;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        display: grid;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    @media print {
+      :root {
+        --paper: #fff;
+        --card: #fff;
+        --line: #cfcfcf;
+      }
+
+      body {
+        background: white;
+        font-size: 9.5pt;
+        line-height: 1.52;
+      }
+
+      .shell {
+        width: 100%;
+      }
+
+      .site-nav,
+      .hero-actions,
+      .rail,
+      .skip-link,
+      .footer {
+        display: none !important;
+      }
+
+      .hero {
+        grid-template-columns: 1fr 250px;
+        gap: 30px;
+        padding: 0 0 28px;
+      }
+
+      h1 {
+        font-size: 44pt;
+      }
+
+      .hero-role {
+        margin-top: 15px;
+        font-size: 16pt;
+      }
+
+      .contact-card {
+        padding: 20px;
+        box-shadow: none;
+      }
+
+      .page-grid {
+        display: block;
+        padding: 0;
+      }
+
+      .resume-section {
+        padding: 24px 0;
+      }
+
+      h2 {
+        font-size: 24pt;
+      }
+
+      .experience,
+      .info-card {
+        padding: 20px;
+        box-shadow: none;
+      }
+
+      .info-card,
+      .research-card {
+        break-inside: avoid;
+      }
+
+      .experience-header,
+      .project-title,
+      .source-links {
+        break-after: avoid;
+      }
+
+      .points li {
+        font-size: 9pt;
+        break-inside: avoid;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">跳到简历正文</a>
+
+  <div class="shell">
+    <nav class="site-nav" aria-label="主导航">
+      <a class="brand" href="#top">MADARAMEHU / RESUME</a>
+      <div class="nav-links">
+        <a href="#experience">经历</a>
+        <a href="#education">教育</a>
+        <a href="#research">研究</a>
+        <a href="resume.pdf" download>PDF</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <div>
+        <p class="eyebrow"><span>LLM ENGINEERING · AGENT SYSTEMS</span><span class="eyebrow-tail"> · POST-TRAINING</span></p>
+        <h1>胡嘉旺</h1>
+        <p class="hero-role">大模型算法工程师</p>
+        <p class="hero-focus">GUI Agent 后训练与数据飞轮 · Agent 长期记忆 · 自进化评测闭环 · 强化学习</p>
+        <div class="hero-actions">
+          <a class="button primary" href="resume.pdf" download>下载 PDF 简历</a>
+          <a class="button" href="mailto:19802393040@163.com">发送邮件</a>
+          <a class="button" href="https://github.com/MadarameHu" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="contact-card" aria-label="联系方式">
+        <p class="rail-label">Contact</p>
+        <dl class="contact-list">
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:19802393040@163.com">19802393040@163.com</a></dd>
+          </div>
+          <div>
+            <dt>WeChat</dt>
+            <dd>19802393040</dd>
+          </div>
+          <div>
+            <dt>GitHub</dt>
+            <dd><a href="https://github.com/MadarameHu" target="_blank" rel="noreferrer">@MadarameHu</a></dd>
+          </div>
+        </dl>
+      </aside>
+    </header>
+
+    <div class="page-grid">
+      <aside class="rail" aria-label="简历目录与关键词">
+        <div class="rail-block">
+          <p class="rail-label">Index</p>
+          <nav>
+            <ul class="rail-nav">
+              <li><a href="#experience"><span>01</span>工作经历</a></li>
+              <li><a href="#education"><span>02</span>教育背景</a></li>
+              <li><a href="#research"><span>03</span>在校论文</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="rail-block">
+          <p class="rail-label">Focus</p>
+          <ul class="tag-list" aria-label="专业方向">
+            <li>GUI Agent</li>
+            <li>Post-training</li>
+            <li>SFT</li>
+            <li>GSPO</li>
+            <li>Agent Memory</li>
+            <li>Self-Evolution</li>
+            <li>LLM Judge</li>
+            <li>Data Flywheel</li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content" id="content">
+        <section class="resume-section" id="experience">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Selected work</p>
+              <h2>工作经历</h2>
+            </div>
+            <span class="section-index" aria-hidden="true">01</span>
+          </div>
+
+          <div class="experience-list">
+            <article class="experience current">
+              <header class="experience-header">
+                <div>
+                  <h3 class="company">阶跃星辰</h3>
+                  <p class="role">大模型算法工程师（post training）</p>
+                </div>
+                <span class="date">2025.11 – 至今</span>
+              </header>
+
+              <section class="project">
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>AutoMemEvo - Agent 驱动的自进化系统 <span class="project-note">单人项目</span></h4>
+                <ul class="points">
+                  <li>从 0 到 1 构建无梯度自动优化闭环，驱动 Agent 完成「评测 → Bad Case 归因 → Prompt/参数优化 → 复评 → Diff 决策 → 经验沉淀」；冻结 Benchmark、Harness 与 Judge，仅开放白名单配置，结合单（多）变量实验、版本快照及失败整包回滚，保障迭代可复现、分数可比。</li>
+                  <li>设计双层错误归因体系：通过 LLM Judge 完成错误分类与跨轮翻转分析，再由 Subagent 逐 Turn 回溯 Capture 日志、写入操作及记忆快照，定位事实在捕获、改写或驱逐环节的具体失效点；据此识别 <strong>73% 写入被容量淘汰</strong>的问题，并通过电报式密写、近重复合并等策略，将驱逐率由 <strong>55% 降至 22%</strong>。</li>
+                  <li>累计沉淀 <strong>41 轮自动化实验</strong>；在 PersonaMem 全量评测中，将 qa_acc 从 <strong>43.1% 提升至 76.4%</strong>，正确题数由 254 提升至 450；统一接入 HaluMem、LoCoMo、LongMemEval、PersonaMem 4 个 Benchmark，形成 Benchmark / Adapter / Harness 三层解耦的可插拔评测架构。</li>
+                </ul>
+              </section>
+
+              <section class="project">
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>Step-GUI 后训练</h4>
+                <div class="source-links">
+                  <a href="https://zhuanlan.zhihu.com/p/2055990164573384784" target="_blank" rel="noreferrer">知乎：手机 GUI Agent 几个月的摸爬滚打 ↗</a>
+                </div>
+                <ul class="points">
+                  <li><strong>数据飞轮：</strong>UI perception、Grounding、OCR、精确 caption、任务规划、任务拆解、反思、动作决策与目标分解、弹窗识别、跨步预测，并加入 math、logic、tool call 等进行混训迭代；基于强模型蒸馏构建多模态训练数据，结合线上及评测 Bad Case 进行归因，定向补充困难样本与能力短板，数据回流基模 mid-train，形成「模型评测 → 错误归因 → 数据回流 → 重训验证」的数据飞轮闭环。</li>
+                  <li><strong>模型训练：</strong>多模态 GUI Agent 千万级数据后训练，性能接近 SOTA 模型 Seed 2.0。</li>
+                  <li><strong>前沿预研：</strong>探索多步 Macro Action 建模，将连续原子操作压缩为可复用连续动作；研究 Cache-Share Model 与跨模型 KV Cache 复用，降低多阶段 Agent 推理重计算与上下文 prefill 成本。</li>
+                </ul>
+              </section>
+
+              <section class="project">
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>GUI 经验库推理加速 <span class="project-note">单人项目</span></h4>
+                <ul class="points">
+                  <li><strong>方案设计：</strong>主导 GUI Agent 经验库投机执行方案，设计任务向量召回、动作对齐、可复用性判断、动作后 XML 节点链验证四层过滤，命中后直接复用历史下一步动作。</li>
+                  <li><strong>核心创新：</strong>结合通用 / App-specific 规则识别稳定结构控件，并以 XML 严格匹配作为执行前安全门；采用“高精度、低召回、失败回退”的取舍，牺牲部分命中率以降低错误操作风险。</li>
+                  <li>经验命中步骤跳过一次模型调用，决策耗时由约 <strong>1.5s 降至几十毫秒</strong>，并完成线上落地。BMK 50 case 测试中，总体耗时<strong>降低 23.6%</strong>。</li>
+                </ul>
+              </section>
+
+              <section class="project">
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>StepMem Dream — Agent 长期记忆在线服务（记忆提取）</h4>
+                <ul class="points">
+                  <li><strong>记忆系统架构：</strong>参与构建 FastAPI Capture/Recall → Memory Store → Light/REM/Deep/Feature/Sweeper 异步演化架构。</li>
+                  <li><strong>提取治理：</strong>主导 Light Memory 提取协议与事实准入机制，通过 User/Agent 角色化证据、易变事实拦截、Semantic/Episodic 分源治理及 Slot Catalog，避免工具结果、历史报价等短期状态污染长期记忆，并解决同义事实跨轮槽位漂移问题。</li>
+                  <li><strong>评测体系：</strong>设计并实现 Light-BMK 四榜评测 Pipeline，覆盖 Intent Contract、Semantic、Episodic 与 Directive；贯通 Raw → Validated → Persisted → Rejected 全阶段追踪，引入治理 Hard Gate、双 Judge 与冲突独立裁决，实现记忆提取质量、事实准入及控制指令执行的细粒度归因。</li>
+                  <li><strong>数据合成蒸馏管线搭建：</strong>persona / 人生时间线 / 多 session 对话 / 评测埋点预注入 / GT 导出全链路。</li>
+                </ul>
+              </section>
+            </article>
+
+            <article class="experience">
+              <header class="experience-header">
+                <div>
+                  <h3 class="company">神州数码 AI 研究院</h3>
+                  <p class="role">算法研究员（post training）</p>
+                </div>
+                <span class="date">2025.04 – 2025.11</span>
+              </header>
+              <div class="source-links">
+                <a href="https://zhuanlan.zhihu.com/p/1932961149491577715" target="_blank" rel="noreferrer">知乎：GSPO 技术细节 ↗</a>
+                <a href="https://arxiv.org/abs/2507.14447" target="_blank" rel="noreferrer">arXiv：Routine Framework ↗</a>
+              </div>
+              <ul class="points">
+                <li>结合企业「神州问学平台」API，基于 Routine Prompt 做 GPT 数据蒸馏；设计多粒度奖励信号（格式 / 函数 / 参数 / 参数内容），并引入无关工具粗筛，平均耗时<strong>降低 27.5%</strong>；Qwen3-14B 进行 SFT + GSPO 训练，OOD 场景准确率从 <strong>32.6% 提升至 95.5%</strong>，接近 GPT-4o 水平。</li>
+                <li>通过细粒度的奖励设计，对多步工具调用任务进行 turn_level 级别的 credit assignment，相比 GPSO 加速 reward 提升效率，只对 20% 高熵区域做 pg，不会影响模型效果。</li>
+              </ul>
+            </article>
+
+            <article class="experience">
+              <header class="experience-header">
+                <div>
+                  <h3 class="company">Electroder（清华 AI4S 初创）</h3>
+                  <p class="role">强化学习算法工程师 · 实习</p>
+                </div>
+                <span class="date">2024.11 – 2025.03</span>
+              </header>
+              <ul class="points">
+                <li>使用贝叶斯优化对锂电池充放电过程进行物理参数自拟合，根据用户目标放电曲线并行寻优物理参数，改进 Loss 定义，增强放电后期收敛性；引入限制条件样条插值法，拟合曲线更平滑，Loss <strong>降低 21.7%</strong>。</li>
+                <li>修复初始化插值不匹配以及 loss 部分定义异常等 bug，解决充电初期拟合较差和寻优参数约束未生效的问题；改变部分物理参数的插值方法，运用加入限制条件的样条插值法，扩展正负极反应系数等物理寻优参数，得到与实际更贴近的电池工况曲线。</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="resume-section" id="education">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Academic path</p>
+              <h2>教育背景</h2>
+            </div>
+            <span class="section-index" aria-hidden="true">02</span>
+          </div>
+
+          <div class="two-column">
+            <article class="info-card">
+              <h3>Taylor’s University</h3>
+              <p>计算机科学 · 硕士</p>
+              <span class="period">2023.08 – 2025.02</span>
+            </article>
+            <article class="info-card">
+              <h3>北京科技大学</h3>
+              <p>物理学 · 学士</p>
+              <span class="period">2018.09 – 2022.06</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="resume-section" id="research">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Research</p>
+              <h2>在校论文</h2>
+            </div>
+            <span class="section-index" aria-hidden="true">03</span>
+          </div>
+
+          <article class="research-card">
+            <h3>2024.05 – 2024.07 · ResKANet34</h3>
+            <p>将 <strong>Kolmogorov-Arnold 网络（KAN）</strong>集成至 ResNet34，提出 <strong>ResKANet34</strong> 模型；在图像识别任务中，尤其在<strong>不平衡数据集</strong>上表现优于基线 ResNet34，验证 KAN 在非线性表征上的优势。</p>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <span>HU JIAWANG · LLM / AGENT ENGINEER</span>
+      <span>LAST UPDATED · 2026.08</span>
+    </footer>
+  </div>
+</body>
+</html>
