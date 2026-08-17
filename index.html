@@ -482,19 +482,23 @@
 
     .two-column {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
     .info-card {
-      min-height: 190px;
+      display: grid;
+      grid-template-columns: minmax(220px, 1.35fr) minmax(150px, 1fr) auto;
+      gap: 24px;
+      align-items: center;
       padding: 28px;
       background: var(--card);
       border: 1px solid var(--line);
+      border-left: 4px solid var(--pine);
     }
 
     .info-card h3 {
-      margin: 0 0 6px;
+      margin: 0;
       color: var(--pine);
       font-size: 1.14rem;
     }
@@ -507,7 +511,7 @@
 
     .info-card .period {
       display: block;
-      margin-top: 22px;
+      margin-top: 0;
       color: var(--signal);
       font-family: var(--mono);
       font-size: 0.76rem;
@@ -644,6 +648,15 @@
 
       .two-column {
         grid-template-columns: 1fr;
+      }
+
+      .info-card {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .info-card .period {
+        margin-top: 10px;
       }
 
       .footer {
@@ -922,14 +935,14 @@
 
           <div class="two-column">
             <article class="info-card">
-              <h3>Taylor’s University</h3>
-              <p>计算机科学 · 硕士</p>
-              <span class="period">2023.08 – 2025.02</span>
-            </article>
-            <article class="info-card">
               <h3>北京科技大学</h3>
               <p>物理学 · 学士</p>
               <span class="period">2018.09 – 2022.06</span>
+            </article>
+            <article class="info-card">
+              <h3>Taylor’s University</h3>
+              <p>计算机科学 · 硕士</p>
+              <span class="period">2023.08 – 2025.02</span>
             </article>
           </div>
         </section>
