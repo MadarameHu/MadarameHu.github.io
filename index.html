@@ -6,7 +6,7 @@
   <meta name="description" content="胡嘉旺，大模型算法工程师。聚焦 GUI Agent 后训练、Agent 长期记忆、自进化评测与强化学习。">
   <meta name="theme-color" content="#123f33">
   <meta property="og:title" content="胡嘉旺｜大模型算法工程师">
-  <meta property="og:description" content="GUI Agent 后训练 · Agent 长期记忆 · 自进化评测 · 强化学习">
+  <meta property="og:description" content="Agentic RL 与数据飞轮 · Agent 长期记忆与持续学习 · 强化学习">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://madaramehu.github.io/">
   <title>胡嘉旺｜大模型算法工程师</title>
@@ -774,7 +774,7 @@
         <p class="eyebrow"><span>LLM ENGINEERING · AGENT SYSTEMS</span><span class="eyebrow-tail"> · POST-TRAINING</span></p>
         <h1>胡嘉旺</h1>
         <p class="hero-role">大模型算法工程师</p>
-        <p class="hero-focus">GUI Agent 后训练与数据飞轮 · Agent 长期记忆 · 自进化评测闭环 · 强化学习</p>
+        <p class="hero-focus">Agentic RL 与数据飞轮 · Agent 长期记忆与持续学习 · 强化学习</p>
         <div class="hero-actions">
           <a class="button primary" href="resume.pdf" download>下载 PDF 简历</a>
           <a class="button" href="mailto:19802393040@163.com">发送邮件</a>
@@ -859,13 +859,13 @@
               </section>
 
               <section class="project">
-                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>Step-GUI 后训练</h4>
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>Step-GUI toolcall 后训练</h4>
                 <div class="source-links">
                   <a href="https://zhuanlan.zhihu.com/p/2055990164573384784" target="_blank" rel="noreferrer">知乎：手机 GUI Agent 几个月的摸爬滚打 ↗</a>
                 </div>
                 <ul class="points">
-                  <li><strong>数据飞轮：</strong>UI perception、Grounding、OCR、精确 caption、任务规划、任务拆解、反思、动作决策与目标分解、弹窗识别、跨步预测，并加入 math、logic、tool call 等进行混训迭代；基于强模型蒸馏构建多模态训练数据，结合线上及评测 Bad Case 进行归因，定向补充困难样本与能力短板，数据回流基模 mid-train，形成「模型评测 → 错误归因 → 数据回流 → 重训验证」的数据飞轮闭环。</li>
-                  <li><strong>模型训练：</strong>多模态 GUI Agent 千万级数据后训练，性能接近 SOTA 模型 Seed 2.0。</li>
+                  <li><strong>数据飞轮：</strong>结合人工采标与强模型蒸馏构建多模态训练数据，覆盖感知、定位、OCR、精确 caption、任务规划/拆解、反思、动作决策、弹窗识别、跨步预测等元能力，并按配比混入 math、logic、tool call 等通用能力数据；基于线上及评测 Bad Case 归因，定向补充困难样本与能力短板，数据回流基模 mid-train，形成「数据生成 → 模型训练 → 线上评测 → 错误归因 → 数据迭代」的飞轮闭环。</li>
+                  <li><strong>模型训练：</strong>千万级多模态数据 SFT + GRPO 后训练，Mobile GUI 内榜性能接近 SOTA 模型 Seed 2.0。</li>
                   <li><strong>前沿预研：</strong>探索多步 Macro Action 建模，将连续原子操作压缩为可复用连续动作；研究 Cache-Share Model 与跨模型 KV Cache 复用，降低多阶段 Agent 推理重计算与上下文 prefill 成本。</li>
                 </ul>
               </section>
@@ -903,7 +903,7 @@
                 <a href="https://arxiv.org/abs/2507.14447" target="_blank" rel="noreferrer">arXiv：Routine Framework ↗</a>
               </div>
               <ul class="points">
-                <li>结合企业「神州问学平台」API，基于 Routine Prompt 做 GPT 数据蒸馏；设计多粒度奖励信号（格式 / 函数 / 参数 / 参数内容），并引入无关工具粗筛，平均耗时<strong>降低 27.5%</strong>；Qwen3-14B 进行 SFT + GSPO 训练，OOD 场景准确率从 <strong>32.6% 提升至 95.5%</strong>，接近 GPT-4o 水平。</li>
+                <li><strong>企业 DHR 场景多轮 tool call 后训练：</strong>结合企业「神州问学平台」API，基于 Routine Prompt 做 GPT 数据蒸馏；设计多粒度奖励信号（格式 / 函数 / 参数 / 参数内容），并引入无关工具粗筛，平均耗时<strong>降低 27.5%</strong>；Qwen3-14B 进行 SFT + GSPO 训练，OOD 场景准确率从 <strong>32.6% 提升至 95.5%</strong>，接近 GPT-4o 水平。</li>
                 <li>通过细粒度的奖励设计，对多步工具调用任务进行 turn_level 级别的 credit assignment，相比 GPSO 加速 reward 提升效率，只对 20% 高熵区域做 pg，不会影响模型效果。</li>
               </ul>
             </article>
@@ -917,7 +917,7 @@
                 <span class="date">2024.11 – 2025.03</span>
               </header>
               <ul class="points">
-                <li>使用贝叶斯优化对锂电池充放电过程进行物理参数自拟合，根据用户目标放电曲线并行寻优物理参数，改进 Loss 定义，增强放电后期收敛性；引入限制条件样条插值法，拟合曲线更平滑，Loss <strong>降低 21.7%</strong>。</li>
+                <li><strong>强化学习优化锂电池充放电拟合仿真曲线：</strong>使用贝叶斯优化对锂电池充放电过程进行物理参数自拟合，根据用户目标放电曲线并行寻优物理参数，改进 Loss 定义，增强放电后期收敛性；引入限制条件样条插值法，拟合曲线更平滑，Loss <strong>降低 21.7%</strong>。</li>
                 <li>修复初始化插值不匹配以及 loss 部分定义异常等 bug，解决充电初期拟合较差和寻优参数约束未生效的问题；改变部分物理参数的插值方法，运用加入限制条件的样条插值法，扩展正负极反应系数等物理寻优参数，得到与实际更贴近的电池工况曲线。</li>
               </ul>
             </article>
