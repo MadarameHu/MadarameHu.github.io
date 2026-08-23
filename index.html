@@ -850,7 +850,7 @@
               </header>
 
               <section class="project">
-                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>AutoMemEvo - Agent 驱动的自进化系统 <span class="project-note">单人项目</span></h4>
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>AutoMemEvo - Agent 驱动的自进化系统</h4>
                 <ul class="points">
                   <li>从 0 到 1 构建无梯度自动优化闭环，驱动 Agent 完成「评测 → Bad Case 归因 → Prompt/参数优化 → 复评 → Diff 决策 → 经验沉淀」；冻结 Benchmark、Harness 与 Judge，仅开放白名单配置，结合单（多）变量实验、版本快照及失败整包回滚，保障迭代可复现、分数可比。</li>
                   <li>设计双层错误归因体系：通过 LLM Judge 完成错误分类与跨轮翻转分析，再由 Subagent 逐 Turn 回溯 Capture 日志、写入操作及记忆快照，定位事实在捕获、改写或驱逐环节的具体失效点；据此识别 <strong>73% 写入被容量淘汰</strong>的问题，并通过电报式密写、近重复合并等策略，将驱逐率由 <strong>55% 降至 22%</strong>。</li>
@@ -871,7 +871,7 @@
               </section>
 
               <section class="project">
-                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>GUI 经验库推理加速 <span class="project-note">单人项目</span></h4>
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>GUI 经验库推理加速</h4>
                 <ul class="points">
                   <li><strong>方案设计：</strong>主导 GUI Agent 经验库投机执行方案，设计任务向量召回、动作对齐、可复用性判断、动作后 XML 节点链验证四层过滤，命中后直接复用历史下一步动作。</li>
                   <li><strong>核心创新：</strong>结合通用 / App-specific 规则识别稳定结构控件，并以 XML 严格匹配作为执行前安全门；采用“高精度、低召回、失败回退”的取舍，牺牲部分命中率以降低错误操作风险。</li>
@@ -898,14 +898,17 @@
                 </div>
                 <span class="date">2025.04 – 2025.11</span>
               </header>
-              <div class="source-links">
-                <a href="https://zhuanlan.zhihu.com/p/1932961149491577715" target="_blank" rel="noreferrer">知乎：GSPO 技术细节 ↗</a>
-                <a href="https://arxiv.org/abs/2507.14447" target="_blank" rel="noreferrer">arXiv：Routine Framework ↗</a>
-              </div>
-              <ul class="points">
-                <li><strong>企业 DHR 场景多轮 tool call 后训练：</strong>结合企业「神州问学平台」API，基于 Routine Prompt 做 GPT 数据蒸馏；设计多粒度奖励信号（格式 / 函数 / 参数 / 参数内容），并引入无关工具粗筛，平均耗时<strong>降低 27.5%</strong>；Qwen3-14B 进行 SFT + GSPO 训练，OOD 场景准确率从 <strong>32.6% 提升至 95.5%</strong>，接近 GPT-4o 水平。</li>
-                <li>通过细粒度的奖励设计，对多步工具调用任务进行 turn_level 级别的 credit assignment，相比 GPSO 加速 reward 提升效率，只对 20% 高熵区域做 pg，不会影响模型效果。</li>
-              </ul>
+              <section class="project">
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>企业 DHR 场景多轮 tool call 后训练</h4>
+                <div class="source-links">
+                  <a href="https://zhuanlan.zhihu.com/p/1932961149491577715" target="_blank" rel="noreferrer">知乎：GSPO 技术细节 ↗</a>
+                  <a href="https://arxiv.org/abs/2507.14447" target="_blank" rel="noreferrer">arXiv：Routine Framework ↗</a>
+                </div>
+                <ul class="points">
+                  <li>结合企业「神州问学平台」API，基于 Routine Prompt 做 GPT 数据蒸馏；设计多粒度奖励信号（格式 / 函数 / 参数 / 参数内容），并引入无关工具粗筛，平均耗时<strong>降低 27.5%</strong>；Qwen3-14B 进行 SFT + GSPO 训练，OOD 场景准确率从 <strong>32.6% 提升至 95.5%</strong>，接近 GPT-4o 水平。</li>
+                  <li>通过细粒度的奖励设计，对多步工具调用任务进行 turn_level 级别的 credit assignment，相比 GPSO 加速 reward 提升效率，只对 20% 高熵区域做 pg，不会影响模型效果。</li>
+                </ul>
+              </section>
             </article>
 
             <article class="experience">
@@ -916,10 +919,13 @@
                 </div>
                 <span class="date">2024.11 – 2025.03</span>
               </header>
-              <ul class="points">
-                <li><strong>强化学习优化锂电池充放电拟合仿真曲线：</strong>使用贝叶斯优化对锂电池充放电过程进行物理参数自拟合，根据用户目标放电曲线并行寻优物理参数，改进 Loss 定义，增强放电后期收敛性；引入限制条件样条插值法，拟合曲线更平滑，Loss <strong>降低 21.7%</strong>。</li>
-                <li>修复初始化插值不匹配以及 loss 部分定义异常等 bug，解决充电初期拟合较差和寻优参数约束未生效的问题；改变部分物理参数的插值方法，运用加入限制条件的样条插值法，扩展正负极反应系数等物理寻优参数，得到与实际更贴近的电池工况曲线。</li>
-              </ul>
+              <section class="project">
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>强化学习优化锂电池充放电拟合仿真曲线</h4>
+                <ul class="points">
+                  <li>使用贝叶斯优化对锂电池充放电过程进行物理参数自拟合，根据用户目标放电曲线并行寻优物理参数，改进 Loss 定义，增强放电后期收敛性；引入限制条件样条插值法，拟合曲线更平滑，Loss <strong>降低 21.7%</strong>。</li>
+                  <li>修复初始化插值不匹配以及 loss 部分定义异常等 bug，解决充电初期拟合较差和寻优参数约束未生效的问题；改变部分物理参数的插值方法，运用加入限制条件的样条插值法，扩展正负极反应系数等物理寻优参数，得到与实际更贴近的电池工况曲线。</li>
+                </ul>
+              </section>
             </article>
           </div>
         </section>
