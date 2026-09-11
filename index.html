@@ -863,15 +863,6 @@
               </section>
 
               <section class="project">
-                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>AutoMemEvo - 评测驱动的记忆进化系统</h4>
-                <ul class="points">
-                  <li>从 0 到 1 构建无梯度自动优化闭环，驱动 Agent 完成「评测 → Bad Case 归因 → Prompt/参数优化 → 复评 → Diff 决策 → 经验沉淀」；冻结 Benchmark、Harness 与 Judge，仅开放白名单配置，结合单（多）变量实验、版本快照及失败整包回滚，保障迭代可复现、分数可比。</li>
-                  <li>设计双层错误归因体系：通过 LLM Judge 完成错误分类与跨轮翻转分析，再由 Subagent 逐 Turn 回溯 Capture 日志、写入操作及记忆快照，定位事实在捕获、改写或驱逐环节的具体失效点；据此识别 <strong>73% 写入被容量淘汰</strong>的问题，并通过电报式密写、近重复合并等策略，将驱逐率由 <strong>55% 降至 22%</strong>。</li>
-                  <li>累计沉淀 <strong>41 轮自动化实验</strong>；在 PersonaMem 全量评测中，将 qa_acc 从 <strong>43.1% 提升至 76.4%</strong>，正确题数由 254 提升至 450；统一接入 HaluMem、LoCoMo、LongMemEval、PersonaMem 4 个 Benchmark，形成 Benchmark / Adapter / Harness 三层解耦的可插拔评测架构。</li>
-                </ul>
-              </section>
-
-              <section class="project">
                 <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>Step-GUI toolcall 后训练</h4>
                 <div class="source-links">
                   <a href="https://zhuanlan.zhihu.com/p/2055990164573384784" target="_blank" rel="noreferrer">知乎：手机 GUI Agent 几个月的摸爬滚打 ↗</a>
@@ -889,6 +880,15 @@
                   <li><strong>方案设计：</strong>主导 GUI Agent 经验库投机执行方案，设计任务向量召回、动作对齐、可复用性判断、动作后 XML 节点链验证四层过滤，命中后直接复用历史下一步动作。</li>
                   <li><strong>核心创新：</strong>结合通用 / App-specific 规则识别稳定结构控件，并以 XML 严格匹配作为执行前安全门；采用“高精度、低召回、失败回退”的取舍，牺牲部分命中率以降低错误操作风险。</li>
                   <li>经验命中步骤跳过一次模型调用，决策耗时由约 <strong>1.5s 降至几十毫秒</strong>，并完成线上落地。BMK 50 case 测试中，总体耗时<strong>降低 23.6%</strong>。</li>
+                </ul>
+              </section>
+
+              <section class="project">
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>AutoMemEvo - 评测驱动的记忆进化系统</h4>
+                <ul class="points">
+                  <li>从 0 到 1 构建无梯度自动优化闭环，驱动 Agent 完成「评测 → Bad Case 归因 → Prompt/参数优化 → 复评 → Diff 决策 → 经验沉淀」；冻结 Benchmark、Harness 与 Judge，仅开放白名单配置，结合单（多）变量实验、版本快照及失败整包回滚，保障迭代可复现、分数可比。</li>
+                  <li>设计双层错误归因体系：通过 LLM Judge 完成错误分类与跨轮翻转分析，再由 Subagent 逐 Turn 回溯 Capture 日志、写入操作及记忆快照，定位事实在捕获、改写或驱逐环节的具体失效点；据此识别 <strong>73% 写入被容量淘汰</strong>的问题，并通过电报式密写、近重复合并等策略，将驱逐率由 <strong>55% 降至 22%</strong>。</li>
+                  <li>累计沉淀 <strong>41 轮自动化实验</strong>；在 PersonaMem 全量评测中，将 qa_acc 从 <strong>43.1% 提升至 76.4%</strong>，正确题数由 254 提升至 450；统一接入 HaluMem、LoCoMo、LongMemEval、PersonaMem 4 个 Benchmark，形成 Benchmark / Adapter / Harness 三层解耦的可插拔评测架构。</li>
                 </ul>
               </section>
 
