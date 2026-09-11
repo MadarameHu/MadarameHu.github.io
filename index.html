@@ -858,7 +858,7 @@
                 <ul class="points">
                   <li><strong>信用分配（核心）：</strong>针对多轮环境交互任务 outcome reward 稀疏、轨迹级优势无法定位错误步的问题，融合 SAO（单 rollout 异步 PPO + 分类 critic + 长度自适应 / skip-observation GAE + DIS 双端裁剪）与 OPSD（同权重模型以"验证过的失败诊断"为特权信息，teacher–student 逐 token log-prob 差作为稠密 advantage），与环境 outcome reward 联合优化；以 SFT 先建立诊断与试错基础能力，解决小模型 pass@k≈0 的冷启动问题。</li>
                   <li><strong>Harness 构建：</strong>搭建长程任务训练 / 评测 harness，覆盖 spreadsheet-native 工具集、沙箱代码执行与 Excel 重算 reward 服务；设计 experience trajectory 沉淀机制，将失败诊断与成功轨迹回流为下一代特权信息与 SFT 数据，形成「rollout → 诊断 → 自蒸馏 → 经验回流」的自进化闭环。</li>
-                  <li><strong>基线与基础设施：</strong>复现 Spreadsheet-RL 同步 GRPO 作为对照基线（验证通过率 <strong>18.2% → 42%</strong>，56% prompt 组全零奖励印证稀疏信用瓶颈）；独立跑通 SAO 两阶段训练栈（slime + Megatron + SGLang，Qwen3-4B TIR 数学 AIME <strong>30.8% → 66%</strong>）。</li>
+                  <li><strong>实验结果：</strong>以 Spreadsheet-RL 同步 GRPO 为对照基线，SpreadsheetBench 验证通过率由基座 <strong>13.5%</strong> 提升至 GRPO <strong>18.2%</strong>，SAO + OPSD 稠密信用分配进一步提升至 <strong>42%</strong>；GRPO 训练中 56% prompt 组全零奖励，印证稀疏 outcome reward 下的信用分配瓶颈。</li>
                 </ul>
               </section>
 
