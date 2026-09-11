@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="胡嘉旺，大模型算法工程师。聚焦 GUI Agent 后训练、Agent 长期记忆、自进化评测与强化学习。">
+  <meta name="description" content="胡嘉旺，大模型算法工程师。聚焦长程 Agentic RL 与信用分配、GUI Agent 后训练、Agent 长期记忆与自进化系统。">
   <meta name="theme-color" content="#123f33">
   <meta property="og:title" content="胡嘉旺｜大模型算法工程师">
   <meta property="og:description" content="Agentic RL 与数据飞轮 · Agent 长期记忆与持续学习 · 强化学习">
@@ -819,6 +819,8 @@
         <div class="rail-block">
           <p class="rail-label">Focus</p>
           <ul class="tag-list" aria-label="专业方向">
+            <li>Agentic RL</li>
+            <li>Credit Assignment</li>
             <li>GUI Agent</li>
             <li>Post-training</li>
             <li>SFT</li>
@@ -857,6 +859,15 @@
                   <li>从 0 到 1 构建无梯度自动优化闭环，驱动 Agent 完成「评测 → Bad Case 归因 → Prompt/参数优化 → 复评 → Diff 决策 → 经验沉淀」；冻结 Benchmark、Harness 与 Judge，仅开放白名单配置，结合单（多）变量实验、版本快照及失败整包回滚，保障迭代可复现、分数可比。</li>
                   <li>设计双层错误归因体系：通过 LLM Judge 完成错误分类与跨轮翻转分析，再由 Subagent 逐 Turn 回溯 Capture 日志、写入操作及记忆快照，定位事实在捕获、改写或驱逐环节的具体失效点；据此识别 <strong>73% 写入被容量淘汰</strong>的问题，并通过电报式密写、近重复合并等策略，将驱逐率由 <strong>55% 降至 22%</strong>。</li>
                   <li>累计沉淀 <strong>41 轮自动化实验</strong>；在 PersonaMem 全量评测中，将 qa_acc 从 <strong>43.1% 提升至 76.4%</strong>，正确题数由 254 提升至 450；统一接入 HaluMem、LoCoMo、LongMemEval、PersonaMem 4 个 Benchmark，形成 Benchmark / Adapter / Harness 三层解耦的可插拔评测架构。</li>
+                </ul>
+              </section>
+
+              <section class="project">
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>面向模型自进化的长程 Agentic RL — SAO + OPSD 信用分配与 Harness 构建<span class="project-note">进行中</span></h4>
+                <ul class="points">
+                  <li><strong>信用分配（核心）：</strong>针对多轮环境交互任务 outcome reward 稀疏、轨迹级优势无法定位错误步的问题，融合 SAO（单 rollout 异步 PPO + 分类 critic + 长度自适应 / skip-observation GAE + DIS 双端裁剪）与 OPSD（同权重模型以"验证过的失败诊断"为特权信息，teacher–student 逐 token log-prob 差作为稠密 advantage），与环境 outcome reward 联合优化；以 SFT 先建立诊断与试错基础能力，解决小模型 pass@k≈0 的冷启动问题。</li>
+                  <li><strong>Harness 构建：</strong>搭建长程任务训练 / 评测 harness，覆盖 spreadsheet-native 工具集、沙箱代码执行与 Excel 重算 reward 服务；设计 experience trajectory 沉淀机制，将失败诊断与成功轨迹回流为下一代特权信息与 SFT 数据，形成「rollout → 诊断 → 自蒸馏 → 经验回流」的自进化闭环。</li>
+                  <li><strong>基线与基础设施：</strong>复现 Spreadsheet-RL 同步 GRPO 作为对照基线（验证通过率 <strong>18.2% → 42%</strong>，56% prompt 组全零奖励印证稀疏信用瓶颈）；独立跑通 SAO 两阶段训练栈（slime + Megatron + SGLang，Qwen3-4B TIR 数学 AIME <strong>30.8% → 66%</strong>）。</li>
                 </ul>
               </section>
 
@@ -986,7 +997,7 @@
 
     <footer class="footer">
       <span>HU JIAWANG · LLM / AGENT ENGINEER</span>
-      <span>LAST UPDATED · 2026.08</span>
+      <span>LAST UPDATED · 2026.09</span>
     </footer>
   </div>
 </body>
