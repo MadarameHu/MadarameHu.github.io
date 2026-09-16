@@ -8,7 +8,7 @@ window.SITE_ENGLISH = [
   { selector: '.nav-links a[href="#research"]', html: 'Research' },
   { selector: '.nav-links a[href="resume.pdf"]', html: 'CV (ZH)' },
   { selector: '.hero-role', html: 'LLM Algorithm Engineer' },
-  { selector: '.hero-focus', html: 'Post Training Agentic RL Data Flywheel · RSI' },
+  { selector: '.hero-focus', html: 'Post Training Agentic RL Data&amp;Env Infra · RSI' },
   { selector: '.hero-actions a[href="resume.pdf"]', html: 'Download CV · Chinese PDF' },
   { selector: '.hero-actions a[href="#experience"]', html: 'Explore Resume <span aria-hidden="true">↗</span>' },
   { selector: '.scroll-label', html: 'SCROLL TO EXPLORE' },
