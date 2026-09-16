@@ -70,6 +70,8 @@ window.SITE_ENGLISH = [
   { selector: '#education h2', html: 'Education' },
   { selector: '#education .info-card:nth-of-type(1) h3', html: 'University of Science and Technology Beijing' },
   { selector: '#education .info-card:nth-of-type(1) p', html: 'Bachelor’s Degree · Physics' },
+  { selector: '#education .education-highlights li:nth-of-type(1)', html: '<strong>800 m champion</strong>, Freshman Sports Meet' },
+  { selector: '#education .education-highlights li:nth-of-type(2)', html: '<strong>University football team member</strong>; <strong>top four</strong> in the Beijing Collegiate Football League' },
   { selector: '#education .info-card:nth-of-type(2) p', html: 'Master’s Degree · Computer Science' },
   { selector: '#research h2', html: 'Academic Research' },
   { selector: '#research .research-card p', html: 'Integrated <strong>Kolmogorov-Arnold Networks (KAN)</strong> into ResNet34 to propose <strong>ResKANet34</strong>. The model outperformed the ResNet34 baseline on image recognition tasks, particularly on <strong>imbalanced datasets</strong>, demonstrating the benefits of KAN for nonlinear representation.' }
