@@ -792,11 +792,11 @@
       <div class="field-stage" aria-hidden="true">
         <div class="field-caption"><span>THE LEARNING LOOP</span><span>FIG. 01</span></div>
         <div class="field-visual">
-          <div class="field-cross cross-top"></div>
-          <div class="field-cross cross-bottom"></div>
           <canvas class="intelligence-field"></canvas>
+          <span class="field-label field-label-top-left">DATA FLYWHEEL</span>
           <span class="field-label field-label-top">POST TRAINING</span>
-          <span class="field-label field-label-bottom">AGENTIC RL</span>
+          <span class="field-label field-label-bottom">HARNESS</span>
+          <span class="field-label field-label-bottom-right">MODEL-NATIVE MEMORY</span>
           <span class="field-center">RSI<span>∞</span></span>
         </div>
         <div class="field-footer"><span>ITERATE. EVALUATE. EVOLVE.</span><span class="field-coordinate">↗</span></div>
@@ -903,7 +903,7 @@
                 <ul class="points">
                   <li><strong>方案设计：</strong>主导 GUI Agent 经验库投机执行方案，设计任务向量召回、动作对齐、可复用性判断、动作后 XML 节点链验证四层过滤，命中后直接复用历史下一步动作。</li>
                   <li><strong>核心创新：</strong>结合通用 / App-specific 规则识别稳定结构控件，并以 XML 严格匹配作为执行前安全门；采用“高精度、低召回、失败回退”的取舍，牺牲部分命中率以降低错误操作风险。</li>
-                  <li>经验命中步骤跳过一次模型调用，决策耗时由约 <strong>1.5s 降至几十毫秒</strong>，并完成线上落地。BMK 50 case 测试中，总体耗时<strong>降低 23.6%</strong>。</li>
+                  <li>经验命中步骤跳过一次模型调用，决策耗时由约 <strong>1.5s 降至几十毫秒</strong>，并完成<strong>灰度上线</strong>。BMK 50 case 测试中，总体耗时<strong>降低 23.6%</strong>。</li>
                 </ul>
               </section>
 
