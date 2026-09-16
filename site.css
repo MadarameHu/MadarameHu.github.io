@@ -148,17 +148,13 @@
   }
   .intelligence-field { position: absolute; inset: 0; width: 100%; height: 100%; }
   .field-label { position: absolute; color: #afbc9f; font: 0.54rem var(--mono); letter-spacing: 0.09em; }
+  .field-label-top-left { top: 11%; left: 3%; }
   .field-label-top { top: 11%; right: 4%; }
   .field-label-bottom { bottom: 11%; left: 3%; }
+  .field-label-bottom-right { bottom: 11%; right: 4%; }
   .field-label::before { content: "+"; margin-right: 7px; color: var(--signal); }
   .field-center { position: absolute; top: 50%; left: 50%; display: grid; justify-items: center; color: #a7b09e; font: 0.52rem var(--mono); letter-spacing: 0.2em; transform: translate(-50%, -50%); pointer-events: none; }
   .field-center > span { margin-top: 4px; color: var(--signal); font: 2.5rem var(--sans); line-height: 1; letter-spacing: 0; }
-  .field-cross { position: absolute; z-index: 1; width: 12px; height: 12px; }
-  .field-cross::before, .field-cross::after { content: ""; position: absolute; background: #46523e; }
-  .field-cross::before { top: 5px; height: 1px; width: 11px; }
-  .field-cross::after { left: 5px; width: 1px; height: 11px; }
-  .cross-top { top: 7%; left: 0; }
-  .cross-bottom { bottom: 7%; right: 0; }
 
   .hero-bottom { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; align-self: end; }
   .scroll-cue { display: inline-flex; gap: 12px; align-items: center; color: #97a18f; text-decoration: none; font: 0.58rem var(--mono); letter-spacing: 0.12em; }
