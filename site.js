@@ -20,11 +20,11 @@
   const metadata = {
     en: {
       title: 'Spike Hu | LLM Algorithm Engineer',
-      description: 'Spike Hu, LLM algorithm engineer focused on post-training, agentic reinforcement learning, data flywheels, and RSI.',
+      description: 'Spike Hu, LLM algorithm engineer focused on post-training, agentic reinforcement learning, data and environment infrastructure, and RSI.',
     },
     zh: {
       title: 'Spike Hu｜大模型算法工程师',
-      description: 'Spike Hu，大模型算法工程师。聚焦 Post Training、Agentic RL、数据飞轮与 RSI。',
+      description: 'Spike Hu，大模型算法工程师。聚焦 Post Training、Agentic RL、Data&Env Infra 与 RSI。',
     },
   };
 
