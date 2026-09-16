@@ -1,15 +1,20 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="胡嘉旺，大模型算法工程师。聚焦长程 Agentic RL 与信用分配、GUI Agent 后训练、Agent 长期记忆与自进化系统。">
-  <meta name="theme-color" content="#123f33">
-  <meta property="og:title" content="胡嘉旺｜大模型算法工程师">
-  <meta property="og:description" content="Agentic RL 与数据飞轮 · Agent 长期记忆与持续学习 · 强化学习">
+  <meta name="description" content="Spike Hu, LLM algorithm engineer focused on post-training, agentic reinforcement learning, data flywheels, and RSI.">
+  <meta name="theme-color" content="#090b0a">
+  <meta property="og:title" content="Spike Hu | LLM Algorithm Engineer">
+  <meta property="og:description" content="Post-training, agentic reinforcement learning, data flywheels, and RSI.">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://madaramehu.github.io/">
-  <title>胡嘉旺｜大模型算法工程师</title>
+  <title>Spike Hu | LLM Algorithm Engineer</title>
+  <link rel="alternate" hreflang="en" href="https://madaramehu.github.io/">
+  <link rel="alternate" hreflang="zh-CN" href="https://madaramehu.github.io/?lang=zh">
+  <script src="translations.js" defer></script>
+  <script src="site.js" defer></script>
+  <script src="field.js" defer></script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
     :root {
@@ -754,13 +759,14 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
   <a class="skip-link" href="#content">跳到简历正文</a>
 
   <div class="shell">
     <nav class="site-nav" aria-label="主导航">
-      <a class="brand" href="#top">MADARAMEHU / RESUME</a>
+      <a class="brand" href="#top">SPIKE HU<span class="brand-detail"> / ENGINEER</span></a>
       <div class="nav-links">
         <a href="#experience">经历</a>
         <a href="#internship">实习</a>
@@ -768,39 +774,57 @@
         <a href="#research">研究</a>
         <a href="resume.pdf" download>PDF</a>
       </div>
+      <button class="language-toggle" type="button" lang="zh-CN" aria-label="Switch to Chinese">中文</button>
     </nav>
 
     <header class="hero" id="top">
-      <div>
-        <p class="eyebrow"><span>LLM ENGINEERING · AGENT SYSTEMS</span><span class="eyebrow-tail"> · POST-TRAINING</span></p>
-        <h1>胡嘉旺</h1>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>RESEARCH × ENGINEERING</p>
+        <h1><span>Spike</span> <span class="name-last">Hu<span class="name-period" aria-hidden="true">.</span></span></h1>
         <p class="hero-role">大模型算法工程师</p>
-        <p class="hero-focus">Agentic RL 与数据飞轮 · Agent 长期记忆与持续学习 · 强化学习</p>
+        <p class="hero-focus">Post Training Agentic RL 数据飞轮 · RSI</p>
         <div class="hero-actions">
-          <a class="button primary" href="resume.pdf" download>下载 PDF 简历</a>
-          <a class="button" href="mailto:19802393040@163.com">发送邮件</a>
-          <a class="button" href="https://github.com/MadarameHu" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button primary" href="#experience">查看简历 <span aria-hidden="true">↗</span></a>
+          <a class="button" href="resume.pdf" download>下载 PDF 简历</a>
         </div>
       </div>
 
-      <aside class="contact-card" aria-label="联系方式">
-        <p class="rail-label">Contact</p>
-        <dl class="contact-list">
-          <div>
-            <dt>Email</dt>
-            <dd><a href="mailto:19802393040@163.com">19802393040@163.com</a></dd>
-          </div>
-          <div>
-            <dt>WeChat</dt>
-            <dd>19802393040</dd>
-          </div>
-          <div>
-            <dt>GitHub</dt>
-            <dd><a href="https://github.com/MadarameHu" target="_blank" rel="noreferrer">@MadarameHu</a></dd>
-          </div>
-        </dl>
-      </aside>
+      <div class="field-stage" aria-hidden="true">
+        <div class="field-caption"><span>THE LEARNING LOOP</span><span>FIG. 01</span></div>
+        <div class="field-visual">
+          <div class="field-cross cross-top"></div>
+          <div class="field-cross cross-bottom"></div>
+          <canvas class="intelligence-field"></canvas>
+          <span class="field-label field-label-top">POST TRAINING</span>
+          <span class="field-label field-label-bottom">AGENTIC RL</span>
+          <span class="field-center">RSI<span>∞</span></span>
+        </div>
+        <div class="field-footer"><span>ITERATE. EVALUATE. EVOLVE.</span><span class="field-coordinate">↗</span></div>
+      </div>
+
+      <div class="hero-bottom">
+        <a class="scroll-cue" href="#experience"><span aria-hidden="true">↓</span><span class="scroll-label">向下探索</span></a>
+        <span class="hero-edition">SELECTED WORK / 2026</span>
+      </div>
     </header>
+
+    <aside class="contact-card" aria-label="联系方式">
+      <p class="rail-label">LET’S CONNECT <span aria-hidden="true">↗</span></p>
+      <dl class="contact-list">
+        <div>
+          <dt>Email</dt>
+          <dd><a href="mailto:19802393040@163.com">19802393040@163.com</a></dd>
+        </div>
+        <div>
+          <dt>WeChat</dt>
+          <dd>19802393040</dd>
+        </div>
+        <div>
+          <dt>GitHub</dt>
+          <dd><a href="https://github.com/MadarameHu" target="_blank" rel="noreferrer">@MadarameHu ↗</a></dd>
+        </div>
+      </dl>
+    </aside>
 
     <div class="page-grid">
       <aside class="rail" aria-label="简历目录与关键词">
@@ -892,13 +916,13 @@
                 </ul>
               </section>
 
-              <section class="project">
-                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>StepMem Dream — Agent 长期记忆在线服务（记忆提取）</h4>
+              <section class="project" id="projects">
+                <h4 class="project-title"><span class="project-mark" aria-hidden="true"></span>胡来 — Codex × 飞书智能协作助手 <span class="project-note">2026.09</span></h4>
                 <ul class="points">
-                  <li><strong>记忆系统架构：</strong>参与构建 FastAPI Capture/Recall → Memory Store → Light/REM/Deep/Feature/Sweeper 异步演化架构。</li>
-                  <li><strong>提取治理：</strong>主导 Light Memory 提取协议与事实准入机制，通过 User/Agent 角色化证据、易变事实拦截、Semantic/Episodic 分源治理及 Slot Catalog，避免工具结果、历史报价等短期状态污染长期记忆，并解决同义事实跨轮槽位漂移问题。</li>
-                  <li><strong>评测体系：</strong>设计并实现 Light-BMK 四榜评测 Pipeline，覆盖 Intent Contract、Semantic、Episodic 与 Directive；贯通 Raw → Validated → Persisted → Rejected 全阶段追踪，引入治理 Hard Gate、双 Judge 与冲突独立裁决，实现记忆提取质量、事实准入及控制指令执行的细粒度归因。</li>
-                  <li><strong>数据合成蒸馏管线搭建：</strong>persona / 人生时间线 / 多 session 对话 / 评测埋点预注入 / GT 导出全链路。</li>
+                  <li><strong>系统搭建：</strong>基于 Python、飞书 CLI 与 Codex app-server 构建任务执行桥接层，将群聊 / 私聊中的 @ 请求转化为 Codex 任务，打通需求接收、执行与结果回传。</li>
+                  <li><strong>会话路由与隔离：</strong>根据任务语义选择相关 Codex 会话，继承历史后 fork 独立子会话；建立飞书话题与子会话的绑定，支持多轮续接，保留原会话上下文。</li>
+                  <li><strong>上下文管理：</strong>按需获取群聊历史与话题讨论，支持信息总结、需求澄清及方案规划，减少用户重复提供项目背景的成本。</li>
+                  <li><strong>执行与交付：</strong>使用 SQLite 持久化任务、进度及投递状态，支持任务并发；通过飞书卡片反馈有效进展、展示图片并回传文件，每次执行保留独立卡片与历史记录。</li>
                 </ul>
               </section>
             </article>
@@ -996,7 +1020,7 @@
     </div>
 
     <footer class="footer">
-      <span>HU JIAWANG · LLM / AGENT ENGINEER</span>
+      <span>SPIKE HU · LLM ALGORITHM ENGINEER</span>
       <span>LAST UPDATED · 2026.09</span>
     </footer>
   </div>
